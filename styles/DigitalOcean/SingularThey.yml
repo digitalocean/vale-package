@@ -1,0 +1,8 @@
+extends: existence
+message: "Use singular 'they' instead of '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/language/singular-they
+level: error
+ignorecase: true
+tokens:
+  - he/she
+  - s/he

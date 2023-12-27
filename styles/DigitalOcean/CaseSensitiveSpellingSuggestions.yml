@@ -1,0 +1,14 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+ignorecase: false
+level: error
+action:
+    name: replace
+swap:
+    "[Ii]ngress.NGINX":     Ingress-NGINX
+    ".ngress.[Nn]ginx":     Ingress-NGINX
+    "[Nn]ginx [Ii]ngress [Cc]ontroller": NGINX Ingress Controller
+    "NGINX ingress [Cc]ontroller":       NGINX Ingress Controller
+    "NGINX [Ii]ngress controller":       NGINX Ingress Controller
+    "(?<!Ingress-)(?:Nginx|NGINX)(?! Ingress)": nginx
+    "(?<!Ingress-)(?:Nginx|NGINX)'s(?! Ingress)": nginx's

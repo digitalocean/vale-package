@@ -1,0 +1,8 @@
+extends: existence
+message: "Use a serial comma in '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/grammar/commas
+scope: sentence
+level: warning
+nonword: true
+tokens:
+  - '(?:[^\s,]+,){1,} \w+ (?:and|or) \w+[.?!]'

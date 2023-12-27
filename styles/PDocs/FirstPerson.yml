@@ -1,0 +1,16 @@
+extends: existence
+message: "Do not use the first person (such as '%s')."
+link: https://docs.digitalocean.com/style/pdocs
+ignorecase: true
+level: error
+nonword: true
+tokens:
+  - (?:^|\s)I\s
+  - (?:^|\s)I,\s
+  - \bI'd\b
+  - \bI'll\b
+  - \bI'm\b
+  - \bI've\b
+  - \bme\b
+  - \bmy\b
+  - \bmine\b

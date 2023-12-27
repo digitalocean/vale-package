@@ -1,0 +1,17 @@
+extends: existence
+message: "Don't tell people how they feel with words like '%s'."
+link: https://docs.digitalocean.com/style/pdocs/tone#empathize-with-the-reader
+ignorecase: false
+level: error
+action:
+  name: remove
+tokens:
+    - '[Ee]asy'
+    - simple
+    - '[Jj]ust'
+    - '[Oo]bvious(ly)?'
+    - '[Ss]imply'
+    - '[Ee]as(y|ily)'
+    - '[Oo]f course'
+    - '[Cc]learly'
+    - '[Ee]veryone knows'

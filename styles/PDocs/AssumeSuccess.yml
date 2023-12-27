@@ -1,0 +1,9 @@
+extends: existence
+message: "Don't assume success with statements like '%s'."
+link: https://docs.digitalocean.com/style/pdocs/tone#empathize-with-the-reader
+ignorecase: true
+level: error
+tokens:
+    - congratulations
+    - that's it
+    - you did it

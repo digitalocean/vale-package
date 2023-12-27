@@ -1,0 +1,8 @@
+extends: existence
+message: "Try to simplify this sentence."
+link: https://docs.digitalocean.com/style/pdocs/tone
+nonword: true
+scope: sentence
+level: suggestion
+tokens:
+  - ';'

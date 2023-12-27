@@ -1,0 +1,8 @@
+extends: existence
+message: "Use straight quotes, not curly quotes."
+nonword: true
+scope: sentence
+level: error
+tokens:
+  - '“'
+  - '”'

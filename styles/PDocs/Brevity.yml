@@ -1,0 +1,12 @@
+extends: existence
+message: "Avoid statements that don't add clarity, like '%s'."
+link: https://docs.digitalocean.com/style/pdocs/tone#be-clear-about-who-our-audience-is
+ignorecase: true
+level: error
+tokens:
+    - note that
+    - (?:it is|it's) important to note
+    - keep (?:|this|that) in mind
+    - as a note
+    - you can see that
+    - as you can see

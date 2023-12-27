@@ -1,0 +1,17 @@
+extends: substitution
+message: Consider using '%s' instead of '%s'.
+link: https://docs.digitalocean.com/style/digitalocean/language/considerate-language
+ignorecase: true
+level: warning
+action:
+  name: replace
+swap:
+    sane: correct|adequate|sufficient|consistent|valid|coherent|sensible|reasonable
+    hang: freeze|stop responding|become unresponsive
+    (?:crazy|insane): extremely|very|illogical|unreasonable
+    insanely: incredibly
+    dummy: placeholder|stand-in|test
+    stupid: foolish|ludicrous|unintelligent
+    (?:fall|fell|falling) on deaf ears: missed the mark|was ignored
+    blind spot: weakness|something we overlooked
+    sanity check: check

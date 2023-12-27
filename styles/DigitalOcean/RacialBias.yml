@@ -1,0 +1,17 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/language/considerate-language
+ignorecase: true
+level: error
+action:
+    name: replace
+swap:
+    master: main
+    slave: secondary
+    whitelist: allowlist
+    whitelisting: allowlisting
+    whitelisted: allowlisted
+    blacklist: denylist
+    blacklisting: denylisting
+    blacklisted: denylisted
+    grandfathered in: carried over

@@ -1,0 +1,12 @@
+[Bb]iller[s]?
+[Bb]indable
+Clusterlint
+doctl
+DOKS('s)?
+Englewood
+Godo
+Paperspace
+PD(?:OCS|ocs)
+pspace
+[Qq]uickstart[s]?
+SnapShooter

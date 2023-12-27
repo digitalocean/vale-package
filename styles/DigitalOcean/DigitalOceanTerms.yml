@@ -1,0 +1,23 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/products/
+ignorecase: false
+level: error
+action:
+    name: replace
+swap:
+    1-click [Aa]pp(?:|lication)[s]?:    1-Click App(lication)
+    1-[Cc]lick app(?:|lication)[s]?:    1-Click App(lication)
+    1-[Cc]licks:                        1-Click App(lication)
+    DigitalOcean [Cc]ontainer registry: DigitalOcean Container Registry
+    DigitalOcean container [Rr]egistry: DigitalOcean Container Registry
+    DigitalOcean [Cc]ontrol panel:      DigitalOcean Control Panel
+    DigitalOcean control [Pp]anel:      DigitalOcean Control Panel
+    DigitalOcean [Dd]roplet console:    DigitalOcean Droplet Console
+    '[Cc]loudWays':                     Cloudways
+    Cloud [Ww]ays':                     Cloudways
+    Cloudways academy:                  Cloudways Academy
+    Digital [Oo]cean:                   DigitalOcean
+    'Digitalocean':                     DigitalOcean
+    'digitalocean^(?:.com)':            DigitalOcean
+    droplet[s]?:                        Droplet(s)

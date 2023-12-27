@@ -1,0 +1,13 @@
+extends: existence
+message: "Use present tense verbs, not future tense verbs like '%s'. Say '(event) happens' instead of '(event) will happen'."
+link: https://docs.digitalocean.com/style/digitalocean/language/verbs
+ignorecase: true
+level: error
+action:
+  name: remove
+tokens:
+- will
+- shall
+- won't
+- shan't
+- "[A-Za-z]*'ll"

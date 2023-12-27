@@ -1,0 +1,24 @@
+extends: substitution
+message: "Consider using '%s' instead of '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/language/considerate-language
+ignorecase: true
+level: error
+action:
+    name: replace
+swap:
+    (?:alumna|alumnus):          graduate
+    (?:alumnae|alumni):          graduates
+    authoress:                   author
+    fresh(?:m[ae]n|wom[ae]n):    first-year student(s)
+    ladylike:                    courteous
+    landlord:                    building manager
+    mankind:                     humankind
+    manmade:                     manufactured
+    manpower:                    personnel
+    middle(?:m[ae]n|wom[ae]n):   intermediary
+    oneupmanship:                upstaging
+    repair(?:m[ae]n|wom[ae]n):   technician(s)
+    sales(?:m[ae]n|wom[ae]n):    salesperson or sales people
+    work(?:m[ae]n|wom[ae]n):     worker(s)
+    manhours:                    workhours
+    manpower:                    staff

@@ -1,0 +1,32 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+ignorecase: true
+level: error
+action:
+    name: replace
+swap:
+    nameserver[s]?:             name server(s)
+    hyperthread(?:s|ed|ing)?:   hyper-thread(s)
+    timeseries:                 time series
+    data center[s]?:            datacenter(s)
+    ruleset[s]?:                rule set(s)
+    multi-cloud:                multicloud
+    cyberattack(?:|s|er):       cyber-attack(s)
+    timeslot[s]?:               time slot(s)
+    webpage[s]?:                web page(s)
+    keypair[s]?:                key pair(s)
+    walkthrough[s]?:            walk-through(s)
+    webserver[s]?:              web server(s)
+    knowledgebase[s]?:          knowledge base(s)
+    timeframe[s]?:              time frame(s)
+    multicore:                  multi-core
+    datapoint[s]?:              data point(s)
+    datatype[s]?:               data type(s)
+    mailserver[s]?:             mail server(s)
+    ratelimit(?:|s|ed|ing)?:    rate limit
+    pageview[s]?:               page view(s)
+    navbar[s]?:                 menu
+    unaccessible:               inaccessible
+    uncompress:                 decompress
+    pulldown:                   pull-down
+    an URL:                     a URL

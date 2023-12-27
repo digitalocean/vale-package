@@ -1,0 +1,9 @@
+extends: existence
+message: Use '1 January 1970' format, not '%s'.
+link: https://docs.digitalocean.com/style/pdocs
+ignorecase: true
+level: error
+nonword: true
+tokens:
+  - '(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)|May|Jun(?:e)|Jul(?:y)|Aug(?:ust)|Sep(?:tember)?|Oct(?:ober)|Nov(?:ember)?|Dec(?:ember)?) \d{1,2} '
+  - '(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)|May|Jun(?:e)|Jul(?:y)|Aug(?:ust)|Sep(?:tember)?|Oct(?:ober)|Nov(?:ember)?|Dec(?:ember)?) \d{1,2},? \d{4}'
