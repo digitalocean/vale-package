@@ -8,7 +8,7 @@ To get started, add the package to your configuration file (as shown below) and 
 
 ```ini
 StylesPath = styles # Use your normal style path here.
-Packages = https://github.com/digitalocean/vale-package/releases/latest/download/DigitalOcean.zip
+Packages = https://github.com/digitalocean/vale-package/releases/latest/download/do-vale.zip
 ```
 
 See [Vale's documentation on packages](https://vale.sh/docs/topics/packages/) for more information.
