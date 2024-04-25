@@ -207,6 +207,7 @@ qcow
 Rackspace
 Razer
 recommender
+[Rr]edeployment(s|'s)?
 Redis
 Redli
 Redsmin
