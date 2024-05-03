@@ -1,7 +1,7 @@
+[Aa]ccessor[s]?
 [Aa]llowlist[s]?
 [Aa]utocommit
 [Aa]utodeploy
-[Aa]ccessor[s]?
 ACL[s]?
 Algolia
 AMI[s]?
@@ -29,6 +29,7 @@ Btrfs
 byobu
 CA[s]?
 CCM(?:|s|'s)
+[Cc]odec(|s|'s)?
 [Cc]omposability
 [Cc]onfig
 [Cc]utover[s]?
@@ -43,7 +44,6 @@ CIDR[s]?
 Citrix
 CLI(|s|'s)?
 CNCF's
-[Cc]odec(|s|'s)?
 Comodo
 Conda
 conformant
@@ -68,12 +68,12 @@ DigiCert
 Dockerfile[s]?
 dockershim
 [Ee]gress(|es|ed|ing)
+[Ee]thernet
 Enom
 Esc
 ETag
 etcd
 Etherpad
-[Ee]thernet
 Fastly
 [Ff]ailover[s]?
 [Ff]irewalld
@@ -86,6 +86,7 @@ FQDN[s]?
 Galera
 Gandi
 G[Bb]ps
+GBs
 gdown
 Gemfile
 [G]eospatial
@@ -96,7 +97,6 @@ GitHub
 Godep
 govendor
 GPG
-GBs
 GPUs
 Grafana
 Graphcore
@@ -154,9 +154,9 @@ Lua
 matplotlib
 M[Bb]ps
 Megaport
+MLOps
 [Mm]icroarchitectur(?:e|al)
 [Mm]icroservice[s]
-MLOps
 [Mm]ulticloud
 MongoDB
 multiset[s]?
@@ -168,8 +168,8 @@ Netplan
 [Nn]etmask[s]?
 npm
 NumPy
-NVMe
 NVLink
+NVMe
 OAuth
 OmniAuth
 Omnis
@@ -180,6 +180,7 @@ OS
 ownCloud
 Papertrail
 PayPal
+PDF(|s|'s)?
 pgAdmin
 PgBouncer
 Pgpool
@@ -207,7 +208,6 @@ qcow
 Rackspace
 Razer
 recommender
-[Rr]edeployment(s|'s)?
 Redis
 Redli
 Redsmin
@@ -217,6 +217,7 @@ reviewdog
 Rollup
 [Rr]clone
 [Rr]ebalancing
+[Rr]edeployment(s|'s)?
 [Rr]eenabl(e|ed|ing)
 [Rr]eprovision(|s|ed|ing)
 [Rr]ollout
