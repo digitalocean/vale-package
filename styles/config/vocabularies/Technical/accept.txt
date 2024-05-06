@@ -26,6 +26,7 @@ balancer's
 Bluehost
 Boto
 Btrfs
+[Bb]urstable
 byobu
 CA[s]?
 CCM(?:|s|'s)
@@ -66,6 +67,7 @@ data's
 Deepspeed
 DigiCert
 Dockerfile[s]?
+[Dd]ockerhub
 dockershim
 [Ee]gress(|es|ed|ing)
 Enom
@@ -162,6 +164,7 @@ MongoDB
 multiset[s]?
 MySQL
 Namecheap
+NAT[s]
 netfilter
 Netplan
 [Nn]amespace
