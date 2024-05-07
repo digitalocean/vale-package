@@ -163,7 +163,7 @@ MongoDB
 multiset[s]?
 MySQL
 Namecheap
-NAT[s]
+NAT(|s)
 netfilter
 Netplan
 [Nn]amespace
