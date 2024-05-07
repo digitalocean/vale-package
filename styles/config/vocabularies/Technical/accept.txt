@@ -67,7 +67,6 @@ data's
 Deepspeed
 DigiCert
 Dockerfile[s]?
-[Dd]ockerhub
 dockershim
 [Ee]gress(|es|ed|ing)
 Enom
