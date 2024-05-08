@@ -1,6 +1,7 @@
 [Aa]llowlist[s]?
 [Aa]utocommit
 [Aa]utodeploy
+[Aa]bstractive
 [Aa]ccessor[s]?
 ACL[s]?
 Algolia
