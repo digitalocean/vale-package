@@ -11,6 +11,7 @@ Anchore
 Ansible
 API(|s|'s)?
 Aptfile
+arXiv
 Authy
 autofill
 Axios
@@ -58,6 +59,7 @@ cron
 CSIDriver
 CVEs?
 Cyberduck
+Databricks
 Datadog
 data's
 [Dd]atacenter[s]?
@@ -302,6 +304,7 @@ Vultr
 [Vv]irtualized
 WebSocket
 Wget
+Wikidata
 WordPress
 [Ww]ebpack
 Xeon
