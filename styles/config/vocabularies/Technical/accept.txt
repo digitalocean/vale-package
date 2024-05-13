@@ -4,6 +4,7 @@
 [Aa]bstractive
 [Aa]ccessor[s]?
 ACL[s]?
+[Aa]udiobook[s]
 Algolia
 AMI[s]?
 Anchore
@@ -140,6 +141,7 @@ kubeconfig
 Kustomize
 Laravel
 Lerna
+LibriVox
 libvirt
 Lightsail
 Linkerd
@@ -157,6 +159,7 @@ M[Bb]ps
 Megaport
 [Mm]icroarchitectur(?:e|al)
 [Mm]icroservice[s]
+MNIST
 MLOps
 [Mm]ulticloud
 MongoDB
@@ -225,6 +228,7 @@ Rollup
 [Rr]untime[s]?
 rsync
 Rsyslog
+[Ss]afetensors
 Sarama
 SDK[s]?
 Skylake
