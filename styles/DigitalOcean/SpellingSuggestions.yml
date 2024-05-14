@@ -30,3 +30,4 @@ swap:
     uncompress:                 decompress
     pulldown:                   pull-down
     an URL:                     a URL
+    sunset(?:|s|ed|ing)?:       deprecate(s)

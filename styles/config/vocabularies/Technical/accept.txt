@@ -243,7 +243,6 @@ ssh-copy-id
 [Ss]ubnet(|s|work|works)
 Streamlit
 sudo
-sunset(|s|ted|ting)
 Supabase
 SVG
 syslog
