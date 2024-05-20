@@ -4,7 +4,7 @@
 [Aa]bstractive
 [Aa]ccessor[s]?
 ACL[s]?
-[Aa]udiobook[s]
+[Aa]udiobook[s]?
 Algolia
 AMI[s]?
 Anchore
@@ -230,7 +230,7 @@ Rollup
 [Rr]untime[s]?
 rsync
 Rsyslog
-[Ss]afetensors
+safetensor[s]?
 Sarama
 SDK[s]?
 Skylake
