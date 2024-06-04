@@ -3,12 +3,14 @@
 [Aa]utocommit
 [Aa]utodeploy
 ACL[s]?
+[Aa]udiobook[s]?
 Algolia
 AMI[s]?
 Anchore
 Ansible
 API(|s|'s)?
 Aptfile
+arXiv
 Authy
 autofill
 Axios
@@ -57,6 +59,7 @@ cron
 CSIDriver
 CVEs?
 Cyberduck
+Databricks
 Datadog
 data's
 [Dd]atacenter[s]?
@@ -140,6 +143,7 @@ kubeconfig
 Kustomize
 Laravel
 Lerna
+LibriVox
 libvirt
 Lightsail
 Linkerd
@@ -152,12 +156,15 @@ Logstash
 Logtail
 logtalez
 Lua
+[Mm]akefiles?
 matplotlib
 M[Bb]ps
 Megaport
 MLOps
 [Mm]icroarchitectur(?:e|al)
 [Mm]icroservice[s]
+MNIST
+MLOps
 [Mm]ulticloud
 MongoDB
 multiset[s]?
@@ -227,6 +234,7 @@ Rollup
 [Rr]untime[s]?
 rsync
 Rsyslog
+safetensor[s]?
 Sarama
 SDK[s]?
 Skylake
@@ -300,6 +308,7 @@ Vultr
 [Vv]irtualized
 WebSocket
 Wget
+Wikidata
 WordPress
 [Ww]ebpack
 Xeon
