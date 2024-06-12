@@ -200,6 +200,7 @@ Plesk
 PNG
 Postgre(s|SQL)
 [Pp]arsable
+[Pp]asscode[s]?
 [Pp]assthrough
 [Pp]erformant
 [Pp]ooler
