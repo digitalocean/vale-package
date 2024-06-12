@@ -180,6 +180,7 @@ NumPy
 NVLink
 NVMe
 OAuth
+Okta
 OmniAuth
 Omnis
 Ooma
