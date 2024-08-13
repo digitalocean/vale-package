@@ -122,7 +122,7 @@ Icinga
 Infiniband
 inode[s]?
 IP[s]?
-ISP[s]
+ISP(|s|'s)?
 Istio
 iwantmyname
 Jamstack
