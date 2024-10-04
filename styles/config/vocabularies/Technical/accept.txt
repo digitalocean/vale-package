@@ -116,7 +116,7 @@ Hetzner
 HPA[s]?
 (HTTP|http)
 (HTTPS|https)
-[Hh]yperparameters?
+[Hh]yperparameter[s]?
 Icinga
 [Ii]dempotence
 [Ii]mpactful
