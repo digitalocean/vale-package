@@ -10,4 +10,4 @@ tokens:
     - as a note
     - you can see that
     - as you can see
-    - be sure (?to|that)
+    - be sure (?:to|that)
