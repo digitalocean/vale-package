@@ -40,6 +40,7 @@ CDN[s]?
 Ceph
 Certbot
 cgroup[s]?
+[Cc]hatbots?
 chkrootkit
 ci
 CI
@@ -132,6 +133,7 @@ JPG
 JWT
 Kaniko
 Kartograph
+KBs?
 keyspace
 Kibana
 [Kk]eepalive
@@ -172,6 +174,7 @@ multiset[s]?
 MySQL
 Namecheap
 NAT[s]?
+NeMo
 netfilter
 Netplan
 [Nn]amespace
@@ -188,6 +191,7 @@ Ooma
 [Oo]nboarding
 [Oo]nnx
 OS
+[Oo]verfit(s|ting)?
 ownCloud
 Papertrail
 PayPal
@@ -230,6 +234,8 @@ Rollup
 [Rr]ebalancing
 [Rr]edeployment(s|'s)?
 [Rr]eenabl(e|ed|ing)
+[Rr]eindex(es|ing)?
+[Rr]egularizations?
 [Rr]eprovision(|s|ed|ing)
 [Rr]ollout
 [Rr]outable
@@ -267,6 +273,8 @@ Trilio
 [Tt]axability
 [Tt]emplated
 TTL
+[Tt]okenizes?
+[Tt]okenizers?
 [Tt]oolchain[s]?
 [Tt]ooltip
 Twilio
@@ -283,6 +291,7 @@ UUID[s]?
 [Uu]ncomment(|ed)
 [Uu]ncompromised
 [Uu]ndeploy(|ed)
+[Uu]nderfit(s|ting)?
 [Uu]nderuse
 [Uu]nencrypted
 [Uu]nformatted
@@ -298,6 +307,7 @@ UUID[s]?
 [Uu]ntrusted
 [Uu]nversioned
 VDI[s]?
+[Vv]ectorizes?
 Velero
 Vidhya
 virtualenv
