@@ -40,7 +40,7 @@ CDN[s]?
 Ceph
 Certbot
 cgroup[s]?
-[Cc]hatbot[s]?
+[Cc]hatbots?
 chkrootkit
 ci
 CI
@@ -116,7 +116,7 @@ Hetzner
 HPA[s]?
 (HTTP|http)
 (HTTPS|https)
-[Hh]yperparameter[s]?
+[Hh]yperparameters?
 Icinga
 [Ii]dempotence
 [Ii]mpactful
@@ -133,7 +133,7 @@ JPG
 JWT
 Kaniko
 Kartograph
-KB[s]?
+KBs?
 keyspace
 Kibana
 [Kk]eepalive
@@ -236,7 +236,7 @@ Rollup
 [Rr]edeployment(s|'s)?
 [Rr]eenabl(e|ed|ing)
 [Rr]eindex(es|ing)?
-[Rr]egularization[s]?
+[Rr]egularizations?
 [Rr]eprovision(|s|ed|ing)
 [Rr]ollout
 [Rr]outable
@@ -274,8 +274,8 @@ Trilio
 [Tt]axability
 [Tt]emplated
 TTL
-[Tt]okenize[s]?
-[Tt]okenizer[s]?
+[Tt]okenizes?
+[Tt]okenizers?
 [Tt]oolchain[s]?
 [Tt]ooltip
 Twilio
@@ -308,7 +308,7 @@ UUID[s]?
 [Uu]ntrusted
 [Uu]nversioned
 VDI[s]?
-[Vv]ectorize[s]?
+[Vv]ectorizes?
 Velero
 Vidhya
 virtualenv
