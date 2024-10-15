@@ -26,6 +26,7 @@ nginx's
 pageview
 pageviews
 pulldown
+pydo
 ratelimit
 ratelimited
 ratelimiting
