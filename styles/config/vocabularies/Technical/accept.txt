@@ -35,6 +35,7 @@ CCM(?:|s|'s)
 [Cc]odec(|s|'s)?
 [Cc]omposability
 [Cc]onfig
+[Cc]ooldowns?
 [Cc]utover[s]?
 CDN[s]?
 Ceph
