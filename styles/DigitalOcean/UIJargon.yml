@@ -1,0 +1,12 @@
+extends: substitution
+message: "Use '%s' instead of UI jargon like '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/language/considerate-language
+ignorecase: true
+level: error
+action:
+  name: replace
+swap:
+    modal (?:window|dialog|dialogue): window
+    modal: window
+    dialog(?:|ue) (?:box|window): window
+    dialog(?:|ue): window
