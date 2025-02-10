@@ -1,4 +1,4 @@
-[Bb]iller[s]?
+[Bb]illers?
 [Bb]indable
 Clusterlint
 doctl
@@ -8,5 +8,7 @@ Godo
 Paperspace
 PD(?:OCS|ocs)
 pspace
-[Qq]uickstart[s]?
+[Qq]uickstarts?
 SnapShooter
+else's
+PyDo
