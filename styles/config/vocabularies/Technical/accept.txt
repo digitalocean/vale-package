@@ -13,6 +13,7 @@ Aptfile
 arXiv
 Authy
 autofill
+[Aa]utoscal(e|ing)
 Axios
 Backblaze
 balancer's
