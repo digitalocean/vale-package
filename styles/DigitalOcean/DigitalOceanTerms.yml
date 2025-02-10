@@ -21,7 +21,3 @@ swap:
     'Digitalocean':                     DigitalOcean
     'digitalocean^(?:.com)':            DigitalOcean
     droplet[s]?:                        Droplet(s)
-    pydo:                               pydo (code formatting)
-    '[Pp][Yy][Dd]O':                    PyDo
-    '[Pp]Y[Dd][Oo]':                    PyDo
-    (?:Pydo|pyDo):                      PyDo
