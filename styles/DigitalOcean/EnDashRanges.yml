@@ -1,0 +1,10 @@
+extends: existence
+message: "Use an en dash (–) for ranges, not a hyphen: '%s'"
+link: https://docs.digitalocean.com/style/digitalocean/grammar/hyphens
+level: warning
+nonword: true
+tokens:
+  # Numeric ranges with hyphens (e.g., "1-10", "200-299")
+  - '\d+-\d+'
+  # Time ranges with hyphens (e.g., "9am-5pm", "2023-2024")
+  - '\d+(?:am|pm|AM|PM)?-\d+(?:am|pm|AM|PM)?'
