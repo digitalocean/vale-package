@@ -4,14 +4,25 @@ This repository contains a [Vale-compatible](https://vale.sh/) implementation of
 
 ## Getting Started
 
-To get started, add the package to your configuration file (as shown below) and then run `vale sync`.
+Add the package to your configuration file and run `vale sync`.
 
 ```ini
-StylesPath = styles # Use your normal style path here.
+StylesPath = styles
 Packages = https://github.com/digitalocean/vale-package/releases/latest/download/do-vale.zip
+
+Vocab = DigitalOcean, Technical, TechProperNouns
+
+[*.md]
+BasedOnStyles = Vale, DigitalOcean, PDocs
 ```
 
 See [Vale's documentation on packages](https://vale.sh/docs/topics/packages/) for more information.
+
+### Integration with product-docs
+
+The [product-docs repository](https://github.com/digitalocean/product-docs) uses this vale-package in its CI pipeline. The `product-docs/.vale.ini` references this package via the `Packages` directive. On each PR, GitHub Actions runs Vale, which downloads the latest package release and checks all modified Markdown files against the rules. Vale posts results as inline comments on the PR using reviewdog.
+
+Repositories can disable specific rules in their local `.vale.ini` where there are valid exceptions. This architecture lets the vale-package be maintained independently and reused across multiple DigitalOcean documentation repositories.
 
 ## Package Structure
 
@@ -102,22 +113,26 @@ tokens:                   # Patterns to match
 
 ### Adding New Terms
 
-1. **Product/brand names** → Add to `styles/config/vocabularies/DigitalOcean/accept.txt`
-2. **General technical terms** → Add to `styles/config/vocabularies/Technical/accept.txt`
-3. **Technical proper nouns** → Add to `styles/config/vocabularies/TechProperNouns/accept.txt`
-4. **Compound words with valid alternatives** → Add to `styles/ignore/words-with-suggestions.txt`
+Add new terms to the appropriate vocabulary file:
+
+- **Product/brand names**: `styles/config/vocabularies/DigitalOcean/accept.txt`
+- **General technical terms**: `styles/config/vocabularies/Technical/accept.txt`
+- **Technical proper nouns**: `styles/config/vocabularies/TechProperNouns/accept.txt`
+- **Compound words with valid alternatives**: `styles/ignore/words-with-suggestions.txt`
 
 ### Creating New Rules
 
-1. Create a new `.yml` file in `styles/DigitalOcean/` or `styles/PDocs/`
-2. Follow the rule structure pattern shown above
-3. Include a `link` to the relevant style guide section
-4. Test the rule against sample documentation
-5. Set appropriate severity level based on the style guide
+To create a new rule:
+
+1. Create a `.yml` file in `styles/DigitalOcean/` or `styles/PDocs/`.
+2. Follow the rule structure pattern shown above.
+3. Include a `link` to the relevant style guide section.
+4. Test the rule against sample documentation.
+5. Set the severity level based on the style guide.
 
 ### Testing Rules
 
-Test your rules locally by running Vale against sample documentation:
+Test rules locally by running Vale against sample documentation:
 
 ```bash
 vale /path/to/test/file.md
@@ -133,6 +148,15 @@ vale /path/to/test/file.md
 
 ## Style Guide Mapping
 
-There are also a significant number of words defined in `.github/vale/ignore`, including notably a set of words with spelling suggestions which we want to catch with one of the package rules rather than with the less helpful spellchecker.
-
 Each Vale rule corresponds to specific sections in the [DigitalOcean Style Guide](https://docs.digitalocean.com/style/). The `link` property in each rule file points to the relevant style guide page for reference.
+
+## Repository-Specific Overrides
+
+Repositories using this package can disable specific rules in their local `.vale.ini` when there are valid exceptions. For example, product-docs disables some rules that have valid use cases in support documentation:
+
+```ini
+PDocs.FirstPerson = NO
+PDocs.Passive = NO
+```
+
+Document the reasoning when disabling rules.

@@ -48,6 +48,7 @@ Icinga
 IPFire
 Istio
 iwantmyname
+Jira
 Kafka
 Kaniko
 Kartograph
