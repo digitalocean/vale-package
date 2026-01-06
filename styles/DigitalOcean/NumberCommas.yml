@@ -1,7 +1,7 @@
 extends: existence
 message: "Use commas in numbers with four or more digits: '%s'"
 link: https://docs.digitalocean.com/style/digitalocean/grammar/numbers
-level: error
+level: warning
 nonword: true
 tokens:
   # Numbers with 4+ digits without commas (not years, pixels, or after decimals)
