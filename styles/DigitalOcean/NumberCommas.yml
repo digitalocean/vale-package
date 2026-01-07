@@ -1,0 +1,11 @@
+extends: existence
+message: "Use commas in numbers with four or more digits: '%s'"
+link: https://docs.digitalocean.com/style/digitalocean/grammar/numbers
+level: warning
+nonword: true
+tokens:
+  # Numbers with 4+ digits without commas (not years, pixels, or after decimals)
+  # Catches: $1540, 2875 MB, 1280 GB but not: 2023, 1920×1080, 1.06377
+  - '(?<!\d)\$\d{4,}(?!\d)'
+  - '(?<!\d)\d{4,}(?=\s+(?:MB|GB|TB|KB|bytes?|B)\b)'
+  - '(?<!\d)\d{4,}(?=\s+(?:hours?|days?|users?|files?|items?|nodes?)\b)'
