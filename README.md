@@ -7,7 +7,7 @@ This repository contains a [Vale-compatible](https://vale.sh/) implementation of
 Add the package to your configuration file and run `vale sync`.
 
 ```ini
-StylesPath = styles
+StylesPath = styles # Use your normal style path here.
 Packages = https://github.com/digitalocean/vale-package/releases/latest/download/do-vale.zip
 
 Vocab = DigitalOcean, Technical, TechProperNouns
@@ -53,6 +53,8 @@ Located in `styles/DigitalOcean/`, this style implements rules from the [Digital
 - **SerialComma.yml** - Requires Oxford/serial commas
 - **FutureTense.yml** - Discourages future tense in documentation
 - **NumberCommas.yml** - Enforces comma formatting in numbers per Microsoft style guidelines
+- **EnDashRanges.yml** - Requires en dashes in numeric and date ranges
+- **LinkText.yml** - Checks for descriptive link text instead of generic phrases
 - **Units.yml** - Checks proper formatting of units of measurement
 - **DateFormat.yml** - Enforces consistent date formatting
 
@@ -149,6 +151,27 @@ vale /path/to/test/file.md
 ## Style Guide Mapping
 
 Each Vale rule corresponds to specific sections in the [DigitalOcean Style Guide](https://docs.digitalocean.com/style/). The `link` property in each rule file points to the relevant style guide page for reference.
+
+## Releasing Updates
+
+To release a new version of the vale-package:
+
+1. **Prepare the package**: Ensure all updates are committed to the `do-vale/` directory, which contains:
+   - `styles/` - All style rules and vocabularies
+   - `.vale.ini` - Package configuration file (note: files starting with `.` require toggling hidden file visibility in macOS Finder: `Cmd+Shift+.`)
+
+2. **Create the zip file**: Create `do-vale.zip` from the `do-vale/` directory contents. The zip should contain the directory structure shown in the Package Structure section.
+
+3. **Create a GitHub release**: Upload `do-vale.zip` to a new release on GitHub. GitHub automatically includes the repository source code alongside the uploaded zip file.
+
+4. **Version the release**: Follow semantic versioning for release tags.
+
+Consumers reference the package via the releases URL in their `.vale.ini` configuration:
+```ini
+Packages = https://github.com/digitalocean/vale-package/releases/latest/download/do-vale.zip
+```
+
+See [Vale's documentation on packages](https://vale.sh/docs/topics/packages/) for more information on package structure requirements.
 
 ## Repository-Specific Overrides
 
