@@ -1,0 +1,95 @@
+name: Release Vale Rules
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_bump:
+        description: 'Version increment type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch  # Bug fixes, minor updates (3.0.2 → 3.0.3)
+          - minor  # New features, backwards compatible (3.0.2 → 3.1.0)
+          - major  # Breaking changes (3.0.2 → 4.0.0)
+  push:
+    tags:
+      - 'v*' # Triggers only on version tags like v3.0.2, etc.
+   
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for tags
+
+      - name: Determine Version
+        id: version
+        run: |
+          # Get the latest tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Latest tag: $LATEST_TAG"
+          
+          # If triggered by a tag push, use that tag
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            NEW_TAG=${GITHUB_REF#refs/tags/}
+            echo "Using pushed tag: $NEW_TAG"
+          else
+            # Parse version and increment based on input
+            VERSION=${LATEST_TAG#v}
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+            
+            BUMP_TYPE="${{ github.event.inputs.version_bump || 'patch' }}"
+            case "$BUMP_TYPE" in
+              major)
+                MAJOR=$((MAJOR + 1))
+                MINOR=0
+                PATCH=0
+                ;;
+              minor)
+                MINOR=$((MINOR + 1))
+                PATCH=0
+                ;;
+              patch)
+                PATCH=$((PATCH + 1))
+                ;;
+            esac
+            
+            NEW_TAG="v${MAJOR}.${MINOR}.${PATCH}"
+            echo "Incrementing $BUMP_TYPE version to: $NEW_TAG"
+            
+            # Create and push the new tag
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git tag -a "$NEW_TAG" -m "Release $NEW_TAG"
+            git push origin "$NEW_TAG"
+          fi
+          
+          echo "tag=$NEW_TAG" >> $GITHUB_OUTPUT
+
+      - name: Archive Styles
+        run: |
+          # Create temporary directory with correct structure
+          mkdir -p do-vale
+          cp -r styles do-vale/
+          cp .vale.ini do-vale/
+          
+          # Zip the do-vale directory
+          zip -r do-vale.zip do-vale/
+          
+          echo "Zip created successfully with structure: do-vale/styles/ and do-vale/.vale.ini"
+
+      - name: Create Release and Upload Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          files: do-vale.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
