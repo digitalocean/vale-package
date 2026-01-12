@@ -152,26 +152,50 @@ vale /path/to/test/file.md
 
 Each Vale rule corresponds to specific sections in the [DigitalOcean Style Guide](https://docs.digitalocean.com/style/). The `link` property in each rule file points to the relevant style guide page for reference.
 
-## Releasing Updates
+## Deployment
 
-To release a new version of the vale-package:
+The vale-package uses an automated GitHub Actions workflow to create releases. The workflow packages the `styles/` directory and `.vale.ini` file into `do-vale.zip` with the correct structure and publishes it as a GitHub release.
 
-1. **Prepare the package**: Ensure all updates are committed to the `do-vale/` directory, which contains:
-   - `styles/` - All style rules and vocabularies
-   - `.vale.ini` - Package configuration file (note: files starting with `.` require toggling hidden file visibility in macOS Finder: `Cmd+Shift+.`)
+### Automatic Deployment on Merge
 
-2. **Create the zip file**: Create `do-vale.zip` from the `do-vale/` directory contents. The zip should contain the directory structure shown in the Package Structure section.
+When a pull request is merged to the `main` branch, the workflow automatically:
+- Determines the new version number by incrementing the patch version (e.g., 3.0.2 → 3.0.3)
+- Creates a new git tag
+- Packages `styles/` and `.vale.ini` into `do-vale.zip` with structure `do-vale/styles/` and `do-vale/.vale.ini`
+- Creates a GitHub release with auto-generated release notes
+- Marks the release as latest
 
-3. **Create a GitHub release**: Upload `do-vale.zip` to a new release on GitHub. GitHub automatically includes the repository source code alongside the uploaded zip file.
+This ensures every merge to `main` produces a new release without manual intervention.
 
-4. **Version the release**: Follow semantic versioning for release tags.
+### Manual Deployment
+
+For releases that require a specific version increment (minor or major versions), you can trigger the workflow manually:
+
+1. Go to the [Actions tab](https://github.com/digitalocean/vale-package/actions/workflows/vale-package-rel.yml) in this repository.
+2. Click "Run workflow".
+3. Select the version increment type:
+   - **patch**: Bug fixes and minor rule updates (3.0.2 → 3.0.3) - *default for automatic releases*
+   - **minor**: New rules or features (3.0.2 → 3.1.0)
+   - **major**: Breaking changes to rule behavior (3.0.2 → 4.0.0)
+4. Click "Run workflow".
+
+### Version Guidelines
+
+Follow [semantic versioning](https://semver.org/):
+- **Major version** (X.0.0): Breaking changes that require users to update their configurations
+- **Minor version** (0.X.0): New rules or features that are backwards compatible
+- **Patch version** (0.0.X): Bug fixes, rule tweaks, vocabulary additions (automatic on merge)
+
+Since most updates are incremental improvements, the automatic patch increment on merge handles the majority of releases. Use manual deployment only when introducing new features (minor) or breaking changes (major).
+
+### Package Distribution
 
 Consumers reference the package via the releases URL in their `.vale.ini` configuration:
 ```ini
 Packages = https://github.com/digitalocean/vale-package/releases/latest/download/do-vale.zip
 ```
 
-See [Vale's documentation on packages](https://vale.sh/docs/topics/packages/) for more information on package structure requirements.
+The `/latest/download/` path always points to the most recent release, so consumers automatically get updates when they run `vale sync`.
 
 ## Repository-Specific Overrides
 
