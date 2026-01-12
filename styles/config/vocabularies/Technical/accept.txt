@@ -200,8 +200,8 @@ udev
 UI
 uninstallation
 upsert[s]
-URI
-URL
+URI[s]
+URL[s]
 UUIDs?
 [Uu]nassign(|s|ed|ing)
 [Uu]ncheck
