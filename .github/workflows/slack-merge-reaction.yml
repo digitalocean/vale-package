@@ -3,16 +3,27 @@ name: Add Slack Merge Reaction
 on:
   pull_request:
     types: [closed]
+  # Manual trigger for testing
+  workflow_dispatch:
+    inputs:
+      pr_url:
+        description: 'PR URL to test (e.g., https://github.com/digitalocean/vale-package/pull/123)'
+        required: true
+        type: string
+      pr_number:
+        description: 'PR number'
+        required: true
+        type: string
 
 jobs:
   add-merge-reaction:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     uses: digitalocean/docs-automation/.github/workflows/slack-merge-reaction.yml@main
     with:
-      pr_url: ${{ github.event.pull_request.html_url }}
-      pr_number: ${{ github.event.pull_request.number }}
-      merged_by: ${{ github.event.pull_request.merged_by.login }}
-      merge_commit_sha: ${{ github.event.pull_request.merge_commit_sha }}
+      pr_url: ${{ inputs.pr_url || github.event.pull_request.html_url }}
+      pr_number: ${{ inputs.pr_number || github.event.pull_request.number }}
+      merged_by: ${{ github.event.pull_request.merged_by.login || 'manual-test' }}
+      merge_commit_sha: ${{ github.event.pull_request.merge_commit_sha || 'manual-test' }}
     secrets:
       SLACK_BOT_TOKEN: ${{ secrets.PDOCS_SLACK_BOT_TOKEN }}
       SLACK_CHANNEL_ID: ${{ secrets.PDOCS_SLACK_CHANNEL_ID }}
