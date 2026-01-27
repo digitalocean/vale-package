@@ -14,7 +14,11 @@ on:
           - major  # Breaking changes (3.0.2 → 4.0.0)
   push:
     branches:
-      - main  # Automatically release on merge to main
+      - main
+    paths:
+      # Only auto-release when Vale rules or config change
+      - 'styles/**'
+      - '.vale.ini'
    
 
 permissions:
