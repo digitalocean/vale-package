@@ -1,0 +1,29 @@
+extends: substitution
+message: "Use '%s' instead of '%s' for clarity and accessibility."
+link: https://docs.digitalocean.com/style/digitalocean/language/verbs
+ignorecase: true
+level: error
+action:
+  name: replace
+swap:
+  # Prefer "enter" over "type" for text input fields and form values
+  # Based on Microsoft Manual of Style and accessibility best practices
+  # "Enter" is device-agnostic and works for keyboard, voice, paste, and other input methods
+  type (?:in|into) the (\w+) (field|box): enter in the $1 $2
+  type your (\w+) (?:in|into) the (?:\w+ )?(field|box): enter your $1 in the $2
+  type (?:the|a|an) (\w+) (?:in|into) the (?:\w+ )?(field|box): enter $1 in the $2
+  type or (?:copy and )?paste: enter
+  
+  # Prefer "select" over "click" for UI interactions
+  # "Select" works with keyboard, mouse, touch, voice, and assistive technologies
+  click the (\*\*[^*]+\*\*) button: select the $1 button
+  click the (\*\*[^*]+\*\*) link: select the $1 link
+  click on the (\*\*[^*]+\*\*) button: select the $1 button
+  click on the (\*\*[^*]+\*\*) link: select the $1 link
+  click the (\w+(?:\s+\w+)?) button: select the $1 button
+  click the (\w+(?:\s+\w+)?) link: select the $1 link
+  click on the (\w+(?:\s+\w+)?) button: select the $1 button
+  click on the (\w+(?:\s+\w+)?) link: select the $1 link
+  click the (\w+(?:\s+\w+)?) checkbox: select the $1 checkbox
+  click on the (\w+(?:\s+\w+)?) checkbox: select the $1 checkbox
+  click to (\w+): select to $1
