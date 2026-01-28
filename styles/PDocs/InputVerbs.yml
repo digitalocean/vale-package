@@ -1,0 +1,9 @@
+extends: existence
+message: "For accessibility, use 'press' only for keyboard keys. Use 'select' for buttons: '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/language/verbs
+ignorecase: true
+level: error
+tokens:
+  - 'press the \w+ button'
+  - 'press the button'
+  - 'press a button'
