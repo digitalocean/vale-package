@@ -1,4 +1,5 @@
 name: Add Slack Merge Reaction
+
 on:
   pull_request:
     types: [closed]
@@ -15,11 +16,11 @@ on:
 
 jobs:
   add-merge-reaction:
-    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' }}
     uses: digitalocean/docs-automation/.github/workflows/slack-merge-reaction.yml@main
     with:
-      pr_url: ${{ inputs.pr_url || github.event.pull_request.html_url }}
-      pr_number: ${{ inputs.pr_number || github.event.pull_request.number }}
-      merged_by: ${{ github.event.pull_request.merged_by.login || 'manual-test' }}
-      merge_commit_sha: ${{ github.event.pull_request.merge_commit_sha || 'manual-test' }}
+      pr_url: ${{ github.event_name == 'workflow_dispatch' && inputs.pr_url || github.event.pull_request.html_url }}
+      pr_number: ${{ github.event_name == 'workflow_dispatch' && inputs.pr_number || github.event.pull_request.number }}
+      merged_by: ${{ github.event_name == 'workflow_dispatch' && 'manual-test' || github.event.pull_request.merged_by.login || 'manual-test' }}
+      merge_commit_sha: ${{ github.event_name == 'workflow_dispatch' && 'manual-test' || github.event.pull_request.merge_commit_sha || 'manual-test' }}
     secrets: inherit
