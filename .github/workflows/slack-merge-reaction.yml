@@ -1,88 +1,25 @@
 name: Add Slack Merge Reaction
-
 on:
   pull_request:
     types: [closed]
+  workflow_dispatch:
+    inputs:
+      pr_url:
+        description: 'PR URL to test'
+        required: true
+        type: string
+      pr_number:
+        description: 'PR number'
+        required: true
+        type: string
 
 jobs:
   add-merge-reaction:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
-      - name: Verify PR was merged (not just closed)
-        run: |
-          if [ "${{ github.event.pull_request.merged }}" != "true" ]; then
-            echo "PR was closed without merging, skipping"
-            exit 0
-          fi
-          echo "✓ PR #${{ github.event.pull_request.number }} was merged by ${{ github.event.pull_request.merged_by.login }}"
-          echo "✓ Merge commit: ${{ github.event.pull_request.merge_commit_sha }}"
-      
-      - name: Search Slack and add reaction
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.PDOCS_SLACK_BOT_TOKEN }}
-          SLACK_CHANNEL_ID: ${{ secrets.PDOCS_SLACK_CHANNEL_ID }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
-        run: |
-          # Fetch recent messages from the channel and search for the PR URL
-          HISTORY_RESPONSE=$(curl -s -X GET "https://slack.com/api/conversations.history" \
-            -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-            -G --data-urlencode "channel=$SLACK_CHANNEL_ID" \
-            -G --data-urlencode "limit=100")
-          
-          echo "History response: $(echo "$HISTORY_RESPONSE" | jq -r '.ok')"
-          
-          # Check if history fetch was successful
-          if [ "$(echo "$HISTORY_RESPONSE" | jq -r '.ok')" != "true" ]; then
-            echo "Error: History fetch failed - $(echo "$HISTORY_RESPONSE" | jq -r '.error')"
-            exit 1
-          fi
-          
-          # Find the earliest message containing the PR URL
-          # Slack wraps URLs in angle brackets, so check for both formats
-          EARLIEST_MESSAGE=$(echo "$HISTORY_RESPONSE" | jq -r --arg PR_URL "$PR_URL" '
-            .messages[]? 
-            | select(.text | (contains($PR_URL) or contains("<" + $PR_URL + ">") or contains("<" + $PR_URL + "|")))
-            | {channel: "'$SLACK_CHANNEL_ID'", ts: .ts, timestamp: (.ts | tonumber)}
-            | "\(.channel) \(.ts) \(.timestamp)"
-          ' | sort -k3 -n | head -n 1)
-          
-          if [ -z "$EARLIEST_MESSAGE" ]; then
-            echo "No messages found containing the PR URL in recent history"
-            exit 0
-          fi
-          
-          read -r CHANNEL_ID TIMESTAMP _ <<< "$EARLIEST_MESSAGE"
-          
-          echo "Adding merged reaction to message in channel $CHANNEL_ID at $TIMESTAMP"
-          
-          # Check if merged reaction already exists
-          MESSAGE_INFO=$(curl -s -X GET "https://slack.com/api/conversations.history" \
-            -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-            -G --data-urlencode "channel=$CHANNEL_ID" \
-            --data-urlencode "latest=$TIMESTAMP" \
-            --data-urlencode "inclusive=true" \
-            --data-urlencode "limit=1")
-          
-          HAS_MERGED=$(echo "$MESSAGE_INFO" | jq -r '.messages[0].reactions[]? | select(.name == "pr-merged") | .name')
-          
-          if [ "$HAS_MERGED" = "pr-merged" ]; then
-            echo "Merged reaction already exists, skipping"
-            exit 0
-          fi
-          
-          # Add the merged reaction
-          REACTION_RESPONSE=$(curl -s -X POST "https://slack.com/api/reactions.add" \
-            -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "{
-              \"channel\": \"$CHANNEL_ID\",
-              \"timestamp\": \"$TIMESTAMP\",
-              \"name\": \"pr-merged\"
-            }")
-          
-          if [ "$(echo "$REACTION_RESPONSE" | jq -r '.ok')" = "true" ]; then
-            echo "Successfully added merged reaction"
-          else
-            echo "Failed to add reaction: $(echo "$REACTION_RESPONSE" | jq -r '.error')"
-          fi
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    uses: digitalocean/docs-automation/.github/workflows/slack-merge-reaction.yml@main
+    with:
+      pr_url: ${{ inputs.pr_url || github.event.pull_request.html_url }}
+      pr_number: ${{ inputs.pr_number || github.event.pull_request.number }}
+      merged_by: ${{ github.event.pull_request.merged_by.login || 'manual-test' }}
+      merge_commit_sha: ${{ github.event.pull_request.merge_commit_sha || 'manual-test' }}
+    secrets: inherit 
