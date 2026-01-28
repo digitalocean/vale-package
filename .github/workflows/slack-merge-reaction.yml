@@ -17,7 +17,6 @@ on:
 
 jobs:
   add-merge-reaction:
-    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     uses: digitalocean/docs-automation/.github/workflows/slack-merge-reaction.yml@main
     with:
       pr_url: ${{ inputs.pr_url || github.event.pull_request.html_url }}
