@@ -1,0 +1,23 @@
+name: Debug Docs-Automation Access
+
+on:
+  workflow_dispatch:
+
+jobs:
+  access-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check access to docs-automation workflow file
+        env:
+          TARGET_URL: https://api.github.com/repos/digitalocean/docs-automation/contents/.github/workflows/slack-merge-reaction.yml?ref=main
+        run: |
+          echo "Requesting: $TARGET_URL"
+          STATUS=$(curl -s -o /tmp/resp.json -w "%{http_code}" \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "$TARGET_URL")
+          echo "HTTP status: $STATUS"
+          echo "Response:"
+          cat /tmp/resp.json
