@@ -12,8 +12,14 @@ jobs:
       - name: Check access to docs-automation workflow file
         env:
           TARGET_URL: https://api.github.com/repos/digitalocean/docs-automation/contents/.github/workflows/slack-merge-reaction.yml?ref=main
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           echo "Requesting: $TARGET_URL"
+          if [ -z "$GITHUB_TOKEN" ]; then
+            echo "GITHUB_TOKEN is EMPTY"
+          else
+            echo "GITHUB_TOKEN length: ${#GITHUB_TOKEN}"
+          fi
           STATUS=$(curl -s -o /tmp/resp.json -w "%{http_code}" \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github+json" \
