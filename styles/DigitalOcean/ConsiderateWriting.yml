@@ -12,6 +12,15 @@ swap:
     insanely: incredibly
     dummy: placeholder|stand-in|test
     stupid: foolish|ludicrous|unintelligent
-    (?:fall|fell|falling) on deaf ears: missed the mark|was ignored
+    (?:fall|fell|falling) on deaf ears: missed the mark|was ignored|were ignored
     blind spot: weakness|something we overlooked
-    sanity check: check
+    sanity check: check|verify|review
+    kill (?:a|the) (?:process|task|job): terminate|stop
+    killed (?:a|the) (?:process|task|job): terminated|stopped
+    killing (?:a|the) (?:process|task|job): terminating|stopping
+    shoot (?:an|the|a) (?:email|message): send|forward|submit
+    shot (?:an|the|a) (?:email|message): sent|forwarded|submitted
+    shooting (?:an|the|a) (?:email|message): sending|forwarding|submitting
+    tribal knowledge: existing knowledge|internal documentation
+    low-hanging fruit: early opportunity|simple task
+    white knight: system recovery

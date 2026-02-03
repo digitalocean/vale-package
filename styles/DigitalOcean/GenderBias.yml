@@ -21,4 +21,6 @@ swap:
     sales(?:m[ae]n|wom[ae]n):    salesperson or sales people
     work(?:m[ae]n|wom[ae]n):     worker(s)
     manhours:                    workhours
+    man-hours:                   work-hours
     manpower:                    staff
+    work(?:m[ae]n|wom[ae]n):     worker(s)

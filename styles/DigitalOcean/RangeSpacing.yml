@@ -1,0 +1,9 @@
+extends: existence
+message: "Do not add spaces around hyphens in ranges: '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/grammar/hyphens
+level: error
+nonword: true
+tokens:
+  - '\d+\s+-\s+\d+'  # numeric ranges like "10 - 20"
+  - '\d+\s+-\d+'     # "10 -20"
+  - '\d+-\s+\d+'     # "10- 20"

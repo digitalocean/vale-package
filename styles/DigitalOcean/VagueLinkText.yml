@@ -1,0 +1,16 @@
+extends: existence
+message: "Use descriptive link text. Avoid vague phrases like '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/language/links-and-link-text
+level: error
+ignorecase: true
+tokens:
+  - 'click here'
+  - 'learn more'
+  - 'read more'
+  - 'more info'
+  - 'more information'
+  - 'this page'
+  - 'this link'
+  - 'here'
+  - 'click this link'
+  - 'follow this link'
