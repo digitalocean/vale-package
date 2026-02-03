@@ -1,0 +1,16 @@
+extends: existence
+message: "Avoid modal auxiliaries like '%s', which can confuse non-native speakers. Use direct, present-tense verbs instead."
+link: https://docs.digitalocean.com/style/digitalocean/language/verbs
+level: warning
+ignorecase: true
+tokens:
+  - '\bshould\b'
+  - '\bcould\b'
+  - '\bmay\b'
+  - '\bmight\b'
+  - '\bshould not\b'
+  - '\bcould not\b'
+  - '\bmay not\b'
+  - '\bmight not\b'
+  - '\bshouldn''t\b'
+  - '\bcouldn''t\b'

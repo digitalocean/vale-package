@@ -21,3 +21,7 @@ swap:
     'Digitalocean':                     DigitalOcean
     'digitalocean^(?:.com)':            DigitalOcean
     droplet[s]?:                        Droplet(s)
+    \bspace[s]?(?! bucket| for| between| after| before| around| in):          Space(s)
+    the Gradient AI Platform:          Gradient AI Platform
+    model [Pp]layground:                Model Playground
+    agent [Pp]layground:                Agent Playground

@@ -1,0 +1,8 @@
+extends: existence
+message: "Avoid exclamation marks in technical documentation. Rewrite for clarity instead of relying on punctuation for emphasis."
+link: https://docs.digitalocean.com/style/digitalocean/grammar/punctuation
+level: warning
+nonword: true
+scope: sentence
+tokens:
+  - '!'
