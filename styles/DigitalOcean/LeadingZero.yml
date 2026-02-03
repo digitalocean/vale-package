@@ -1,0 +1,7 @@
+extends: existence
+message: "Include a leading zero for decimals less than one: '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/grammar/numbers
+level: error
+nonword: true
+tokens:
+  - '(?:^|\s)\.(\d+)'  # Decimal without leading zero like " .5"

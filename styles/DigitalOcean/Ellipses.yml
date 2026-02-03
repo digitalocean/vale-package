@@ -1,0 +1,12 @@
+extends: existence
+message: "Use ellipses only to represent truncated output or omitted quoted text, not for tone or style: '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/grammar/punctuation
+level: warning
+scope: sentence
+nonword: true
+# This rule flags ellipses in narrative text (not code blocks)
+# It will produce some false positives in legitimate technical uses
+# Use Vale comments to ignore specific instances if needed
+tokens:
+  - '\.\.\.'
+  - '…'  # Unicode ellipsis character

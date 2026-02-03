@@ -1,0 +1,11 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: https://docs.digitalocean.com/style/digitalocean/language/word-choice
+ignorecase: true
+level: error
+action:
+    name: replace
+swap:
+    log into: log in to
+    logged into: logged in to
+    logging into: logging in to
