@@ -1,5 +1,5 @@
 extends: existence
-message: "For accessibility, use 'press' only for keyboard keys. Use 'select' for buttons: '%s'."
+message: "For accessibility, use 'press' only for keyboard keys. Use 'click' for buttons: '%s'."
 link: https://docs.digitalocean.com/style/digitalocean/language/verbs
 ignorecase: true
 level: error
