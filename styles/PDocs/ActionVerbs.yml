@@ -13,17 +13,3 @@ swap:
   type your (\w+) (?:in|into) the (?:\w+ )?(field|box): enter your $1 in the $2
   type (?:the|a|an) (\w+) (?:in|into) the (?:\w+ )?(field|box): enter $1 in the $2
   type or (?:copy and )?paste: enter
-  
-  # Prefer "select" over "click" for UI interactions
-  # "Select" works with keyboard, mouse, touch, voice, and assistive technologies
-  click the (\*\*[^*]+\*\*) button: select the $1 button
-  click the (\*\*[^*]+\*\*) link: select the $1 link
-  click on the (\*\*[^*]+\*\*) button: select the $1 button
-  click on the (\*\*[^*]+\*\*) link: select the $1 link
-  click the (\w+(?:\s+\w+)?) button: select the $1 button
-  click the (\w+(?:\s+\w+)?) link: select the $1 link
-  click on the (\w+(?:\s+\w+)?) button: select the $1 button
-  click on the (\w+(?:\s+\w+)?) link: select the $1 link
-  click the (\w+(?:\s+\w+)?) checkbox: select the $1 checkbox
-  click on the (\w+(?:\s+\w+)?) checkbox: select the $1 checkbox
-  click to (\w+): select to $1
