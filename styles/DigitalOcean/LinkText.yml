@@ -1,0 +1,11 @@
+extends: existence
+message: "Don't use '%s' as link text. Use descriptive text that indicates where the link goes."
+link: https://docs.digitalocean.com/style/digitalocean/language/link-text
+level: error
+nonword: true
+tokens:
+  - '\[click here\]'
+  - '\[here\]'
+  - '\[read more\]'
+  - '\[learn more\]'
+  - '\[this link\]'
