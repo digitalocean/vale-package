@@ -42,6 +42,7 @@ jobs:
           role: digitalocean-vale-package-product-docs-production-main
           secrets: |
             secret-versioned/data/product-docs/production vale_slack_bot_token | SLACK_BOT_TOKEN ;
+            secret-versioned/data/product-docs/production vale_slack_channel_id | SLACK_CHANNEL_ID ;
 
       - name: Determine Version
         id: version
@@ -103,7 +104,7 @@ jobs:
       - name: Notify Slack
         uses: slackapi/slack-github-action@v1.27.0
         with:
-          channel-id: 'CAHET7W2J'
+          channel-id: ${{ steps.secrets.outputs.SLACK_CHANNEL_ID }}
           payload: |
             {
               "text": "New vale-package release: ${{ steps.version.outputs.tag }}",
