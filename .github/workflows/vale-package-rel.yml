@@ -41,7 +41,7 @@ jobs:
           jwtGitHubAudience: product-docs:production
           role: digitalocean-vale-package-product-docs-production-main
           secrets: |
-            secret-versioned/data/product-docs/production pdocs_slack_bot_token | SLACK_BOT_TOKEN ;
+            secret-versioned/data/product-docs/production vale_slack_bot_token | SLACK_BOT_TOKEN ;
 
       - name: Determine Version
         id: version
