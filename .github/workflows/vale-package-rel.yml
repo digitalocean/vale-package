@@ -23,7 +23,6 @@ on:
 
 permissions:
   contents: write
-  id-token: write
 
 jobs:
   build-and-release:
@@ -33,16 +32,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch all history for tags
-
-      - name: Import Secrets from Vault
-        uses: do-actions/hashicorp-vault-action@v2
-        id: secrets
-        with:
-          jwtGitHubAudience: product-docs:production
-          role: digitalocean-vale-package-product-docs-production-main
-          secrets: |
-            secret-versioned/data/product-docs/production vale_slack_bot_token | SLACK_BOT_TOKEN ;
-            secret-versioned/data/product-docs/production vale_slack_channel_id | SLACK_CHANNEL_ID ;
 
       - name: Determine Version
         id: version
@@ -100,11 +89,13 @@ jobs:
           tag_name: ${{ steps.version.outputs.tag }}
           files: do-vale.zip
           generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Notify Slack
         uses: slackapi/slack-github-action@v1.27.0
         with:
-          channel-id: ${{ steps.secrets.outputs.SLACK_CHANNEL_ID }}
+          channel-id: 'CAHET7W2J'
           payload: |
             {
               "text": "New vale-package release: ${{ steps.version.outputs.tag }}",
@@ -126,4 +117,4 @@ jobs:
               ]
             }
         env:
-          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
