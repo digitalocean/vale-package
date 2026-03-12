@@ -1,0 +1,14 @@
+extends: existence
+message: "Avoid phrases that describe the document rather than its subject: '%s'."
+link: https://docs.digitalocean.com/style/pdocs/llm-friendly-content/
+ignorecase: true
+level: warning
+tokens:
+    - in this guide
+    - in this article
+    - in this tutorial
+    - in this document
+    - this (?:article|guide|tutorial|page|document) (?:explains|covers|describes|shows|walks)
+    - we(?:'ll| will) walk you through
+    - you(?:'ll| will) learn (?:how to|about)
+    - learn (?:more about|how to)
