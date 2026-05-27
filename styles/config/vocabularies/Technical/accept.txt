@@ -241,3 +241,12 @@ xrdp
 YAML
 Zombieload
 [Zz]sh
+[Cc]rypto
+[Ss]tablecoins?
+LLMs?
+[Ss]ubprocessors?
+[Dd]DoS
+[Aa]utoscalers?
+prepopulated
+[Mm]ultivalued
+substring
