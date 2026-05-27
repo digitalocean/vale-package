@@ -4,9 +4,10 @@ link: https://docs.digitalocean.com/style/digitalocean/grammar/numbers
 level: warning
 nonword: true
 tokens:
-  # Numbers with 4+ digits without commas (not years, pixels, decimals, or
-  # comma-separated values). Catches: $1540, 2875 MB, 1280 GB but not: 2023,
-  # 1920×1080, 0.0004 GB, 1.06377 GB, 1,000 GB
+  # Numbers with 4+ digits without commas (not years, pixels, or decimals).
+  # Catches: $1540, 2875 MB, 1280 GB but not: 2023, 1920×1080, 0.0004 GB,
+  # 1.06377 GB. Valid comma groups (1,000 GB) already avoid \d{4,} because
+  # they never have four consecutive digits.
   - '(?<!\d)\$\d{4,}(?!\d)'
-  - '(?<![\d.,])\d{4,}(?=\s+(?:MB|GB|TB|KB|bytes?|B)\b)'
-  - '(?<![\d.,])\d{4,}(?=\s+(?:hours?|days?|users?|files?|items?|nodes?)\b)'
+  - '(?<![\d.])\d{4,}(?=\s+(?:MB|GB|TB|KB|bytes?|B)\b)'
+  - '(?<![\d.])\d{4,}(?=\s+(?:hours?|days?|users?|files?|items?|nodes?)\b)'
