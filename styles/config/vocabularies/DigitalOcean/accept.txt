@@ -10,5 +10,6 @@ PD(?:OCS|ocs)
 pspace
 [Qq]uickstarts?
 SnapShooter
+[Tt]oolbelts?
 else's
 PyDo

@@ -55,6 +55,7 @@ DNSCache
 Dockerfiles?
 dockershim
 [Ee]gress(|es|ed|ing)
+[Ee]licitations?
 [Ee]thernet
 Enom
 ETag
