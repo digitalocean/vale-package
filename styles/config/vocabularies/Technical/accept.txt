@@ -266,7 +266,7 @@ traceroute
 [Tt]emplated
 [Tt]iering
 TTLs?
-[Tt]okeniz(e|es|er|ers|ing)
+[Tt]okeniz(e|es|ed|er|ers|ing)
 [Tt]olerations?
 [Tt]oolchains?
 [Tt]ooltip
