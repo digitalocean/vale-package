@@ -3,8 +3,11 @@ message: "Use present tense verbs, not future tense verbs like '%s'. Say '(event
 link: https://docs.digitalocean.com/style/digitalocean/language/verbs
 ignorecase: true
 level: error
-action:
-  name: remove
+# No action. Fixing this needs the verb reconjugated, not the auxiliary deleted:
+# "you will be prompted" becomes "you are prompted", not "you be prompted".
+# `remove` produced that broken output, and none of Vale's other actions
+# (replace, edit, convert) can conjugate, so the rule reports and leaves the
+# rewrite to a human.
 tokens:
 - will
 - shall
