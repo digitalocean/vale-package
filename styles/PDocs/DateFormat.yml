@@ -4,6 +4,25 @@ link: https://docs.digitalocean.com/style/pdocs
 ignorecase: true
 level: error
 nonword: true
+# One token covering "June 1", "Jun 1", "June 1st", and "June 1, 2019".
+#
+# The day is bounded by \b rather than a trailing space so a date at the end of
+# a sentence ("goes into effect June 1.") is caught. The previous pattern
+# required a space after the day, so on a line holding two dates it could report
+# the mid-sentence one and miss the sentence-final one, which invites a
+# half-corrected fix.
+#
+# The \b after the day also stops a bare month and year ("November 2018") from
+# matching, since \d{1,2} cannot end on a word boundary inside a four-digit
+# year.
+#
+# Every month abbreviation is optional. Previously Apr(?:il), Jun(?:e),
+# Jul(?:y), Aug(?:ust), and Oct(?:ober) were missing the trailing ?, so those
+# five spelled-out names matched but "Apr 1" and "Jun 1" did not, while
+# "Jan 1" and "Feb 1" did.
+#
+# The optional ordinal suffix is here because DigitalOcean.DateNumerals lists
+# only spelled-out ordinals ("twenty-sixth"), so "April 26th, 2017" passed both
+# rules.
 tokens:
-  - '(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)|May|Jun(?:e)|Jul(?:y)|Aug(?:ust)|Sep(?:tember)?|Oct(?:ober)|Nov(?:ember)?|Dec(?:ember)?) \d{1,2} '
-  - '(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)|May|Jun(?:e)|Jul(?:y)|Aug(?:ust)|Sep(?:tember)?|Oct(?:ober)|Nov(?:ember)?|Dec(?:ember)?) \d{1,2},? \d{4}'
+  - '\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2}(?:st|nd|rd|th)?\b(?:,?\s*\d{4})?'
