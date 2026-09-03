@@ -119,7 +119,7 @@ Plesk
 pnpm
 Pollara
 Postgre(s|SQL)
-Powershell
+PowerShell
 Prisma
 Qwen
 Rackspace
