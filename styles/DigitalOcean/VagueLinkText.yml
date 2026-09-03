@@ -1,16 +1,28 @@
 extends: existence
-message: "Use descriptive link text. Avoid vague phrases like '%s'."
+message: "Vague link text: '%s'. Use link text that describes the destination."
 link: https://docs.digitalocean.com/style/digitalocean/language/links-and-link-text
 level: error
+# `raw` gives the rule the Markdown source, which is the only way to tell link
+# text apart from ordinary prose. Without it this rule was a bare word search:
+# it flagged "For more information, see [Deploy from Container Images](...)",
+# where the link text is already descriptive and the vague phrase is just part
+# of the sentence. On product-docs that was 828 alerts, of which 111 were even
+# inside link text and only 12 were real.
+#
+# The phrase has to be the whole link text, not merely present in it. Matching
+# anywhere inside the brackets still fires on "[Learn more about taxes in
+# Canada]" and "[Learn more about Droplet availability]", which are good link
+# text; that variant reported 88 alerts on product-docs and most were wrong.
+# Requiring the whole text reports 12, all of them genuinely uninformative
+# ("[here]", "[Click here]", "[Learn more]").
+#
+# The optional [*_ ] padding covers bold and italic link text ("[**here**]"),
+# and the trailing punctuation class covers "[Learn more.]".
+#
+# Note `raw` bypasses TokenIgnores and BlockIgnores in a consumer's .vale.ini,
+# which is safe here only because the pattern is anchored to link syntax.
+scope: raw
+nonword: true
 ignorecase: true
 tokens:
-  - 'click here'
-  - 'learn more'
-  - 'read more'
-  - 'more info'
-  - 'more information'
-  - 'this page'
-  - 'this link'
-  - 'here'
-  - 'click this link'
-  - 'follow this link'
+  - '\[[*_ ]*(?:click this link|follow this link|more information|click here|learn more|more details|read more|this page|this link|more info|here)[*_ ]*[.,!?:;]?[*_ ]*\]\('
