@@ -2,32 +2,27 @@ extends: existence
 message: "Vague link text: '%s'. Use link text that describes the destination."
 link: https://docs.digitalocean.com/style/digitalocean/language/links-and-link-text
 level: error
-# `scope: link` restricts the rule to link text, which is the only way to tell
-# it apart from ordinary prose. Without a scope this was a bare word search: it
-# flagged "For more information, see [Deploy from Container Images](...)", where
-# the link text already describes the destination and the vague phrase is just
-# part of the sentence. On product-docs that was 828 errors, of which only 111
-# matches were inside link text at all and only 12 described nothing.
+# `raw` gives the rule the Markdown source, which is the only way to tell link
+# text apart from ordinary prose. Without it this rule was a bare word search:
+# it flagged "For more information, see [Deploy from Container Images](...)",
+# where the link text is already descriptive and the vague phrase is just part
+# of the sentence. On product-docs that was 828 alerts, of which 111 were even
+# inside link text and only 12 were real.
 #
-# The scope is syntax-aware, so images, inline code, fenced code, and indented
-# code are all excluded. Approximating it with `scope: raw` and a bracket
-# pattern does not get that: raw sees the whole source, so a `[here](url)`
-# example inside a fenced code block is reported.
+# The phrase has to be the whole link text, not merely present in it. Matching
+# anywhere inside the brackets still fires on "[Learn more about taxes in
+# Canada]" and "[Learn more about Droplet availability]", which are good link
+# text; that variant reported 88 alerts on product-docs and most were wrong.
+# Requiring the whole text reports 12, all of them genuinely uninformative
+# ("[here]", "[Click here]", "[Learn more]").
 #
-# REQUIRES VALE >= 3.17.0. `link` was removed and later reinstated; 3.16.0 and
-# earlier fail with "E201: scope 'link' is no longer supported", which aborts
-# the run rather than skipping the rule.
+# The optional [*_ ] padding covers bold and italic link text ("[**here**]"),
+# and the trailing punctuation class covers "[Learn more.]".
 #
-# Tokens are anchored because the phrase has to be the whole link text, not
-# merely present in it. Unanchored, this still fires on "Learn more about taxes
-# in Canada" and "Learn more about Droplet availability", which are exactly the
-# link text we want; that variant reported 88 on product-docs, mostly wrong, and
-# is what f2ad6c4 tried and f583e05 reverted.
-#
-# The optional [*_ ] padding covers bold and italic link text ("**here**") and
-# the punctuation class covers a trailing period ("Learn more.").
-scope: link
+# Note `raw` bypasses TokenIgnores and BlockIgnores in a consumer's .vale.ini,
+# which is safe here only because the pattern is anchored to link syntax.
+scope: raw
 nonword: true
 ignorecase: true
 tokens:
-  - '^[*_ ]*(?:click this link|follow this link|more information|click here|learn more|more details|read more|this page|this link|more info|here)[*_ ]*[.,!?:;]?[*_ ]*$'
+  - '\[[*_ ]*(?:click this link|follow this link|more information|click here|learn more|more details|read more|this page|this link|more info|here)[*_ ]*[.,!?:;]?[*_ ]*\]\('
