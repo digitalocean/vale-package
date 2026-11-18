@@ -1,0 +1,15 @@
+# The AI products were renamed in April 2026. A substitution rule cannot fix
+# these names because the replacement depends on what the sentence describes,
+# so this rule reports them without offering a fix. Release notes that record
+# the old names are excluded in the consumer's .vale.ini, not here.
+#
+# Only the platform names are matched. "Gradient" alone still names Paperspace
+# products, and the deprecated "Gradient AI" SDKs keep their published names.
+extends: existence
+message: "'%s' is a retired product name. Use Inference for models, Knowledge Bases for retrieval, or Managed Agents for agent hosting."
+link: https://docs.digitalocean.com/style/digitalocean/products/
+level: warning
+ignorecase: true
+tokens:
+  - 'Gradient AI Platform'
+  - 'GenAI Platform'
